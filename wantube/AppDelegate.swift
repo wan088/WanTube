@@ -17,9 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.makeKeyAndVisible()
+        UINavigationBar.appearance().tintColor = .red
         self.window?.rootViewController = UINavigationController(rootViewController: HomeController())
-        
-        
+        application.statusBarStyle = .lightContent
         return true
     }
 

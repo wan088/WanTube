@@ -13,9 +13,18 @@ class HomeController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        self.navigationItem.title = "Home"
+        
+        let titleView = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 32, height: self.view.frame.height))
+        titleView.textAlignment = .left
+        titleView.textColor = .white
+        titleView.font = .boldSystemFont(ofSize: 20)
+        titleView.text = "WanTube"
+        self.navigationItem.titleView = titleView
+        
+        
         self.tableView.register(VideoCell.self, forCellReuseIdentifier: "cellId")
-        print(VideoCell.self)
+        self.navigationController?.navigationBar.barTintColor = .red
+        self.navigationController?.navigationBar.isTranslucent = true
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -26,7 +35,7 @@ class HomeController: UITableViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 300
     }
 }
 class VideoCell: UITableViewCell{
@@ -37,12 +46,16 @@ class VideoCell: UITableViewCell{
     var thumbnailImageView: UIImageView = {
         let imageView :UIImageView = UIImageView()
         imageView.backgroundColor = .yellow
+        imageView.image = UIImage(named: "Default_Thumb")
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     var profileImageView: UIImageView = {
         let imageView :UIImageView = UIImageView()
         imageView.backgroundColor = .green
+        imageView.image = UIImage(named: "Default_Profile")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 22;
         imageView.layer.masksToBounds = true;
@@ -50,14 +63,20 @@ class VideoCell: UITableViewCell{
     }()
     var titleLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .red
+        label.backgroundColor = .white
+        label.text = "ChainSmokers - SickBoy"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     var subTitleLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .purple
+        label.backgroundColor = .white
+        label.numberOfLines = 2
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.text = "OfficalChainSmokers - 1.000.000.000 views - 2 years "
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = .lightGray
         return label
     }()
     func setupViews(){
@@ -79,10 +98,10 @@ class VideoCell: UITableViewCell{
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[v0(20)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0" : titleLabel]))
         
         //subTitleLabel's
-        addConstraint(NSLayoutConstraint(item: subTitleLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 8))
+        addConstraint(NSLayoutConstraint(item: subTitleLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 4))
         addConstraint(NSLayoutConstraint(item: subTitleLabel, attribute: .left, relatedBy: .equal, toItem: titleLabel, attribute: .left, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: subTitleLabel, attribute: .right, relatedBy: .equal, toItem: titleLabel, attribute: .right, multiplier: 1, constant: 0))
-        addConstraint(NSLayoutConstraint(item: subTitleLabel, attribute: .bottom, relatedBy: .equal, toItem: profileImageView, attribute: .bottom, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: subTitleLabel, attribute: .bottom, relatedBy: .equal, toItem: profileImageView, attribute: .bottom, multiplier: 1, constant: 10))
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
