@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CCCBB11822EC4C7E00FC864D /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBB11722EC4C7E00FC864D /* VideoCell.swift */; };
 		CCDAC05422EAB953003AAF9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDAC05322EAB953003AAF9B /* AppDelegate.swift */; };
-		CCDAC05622EAB953003AAF9B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDAC05522EAB953003AAF9B /* ViewController.swift */; };
+		CCDAC05622EAB953003AAF9B /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDAC05522EAB953003AAF9B /* HomeController.swift */; };
 		CCDAC05922EAB953003AAF9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCDAC05722EAB953003AAF9B /* Main.storyboard */; };
 		CCDAC05B22EAB955003AAF9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCDAC05A22EAB955003AAF9B /* Assets.xcassets */; };
 		CCDAC05E22EAB955003AAF9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCDAC05C22EAB955003AAF9B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CCCBB11722EC4C7E00FC864D /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		CCDAC05022EAB953003AAF9B /* wantube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wantube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCDAC05322EAB953003AAF9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CCDAC05522EAB953003AAF9B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CCDAC05522EAB953003AAF9B /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		CCDAC05822EAB953003AAF9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CCDAC05A22EAB955003AAF9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCDAC05D22EAB955003AAF9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,10 +57,11 @@
 			isa = PBXGroup;
 			children = (
 				CCDAC05322EAB953003AAF9B /* AppDelegate.swift */,
-				CCDAC05522EAB953003AAF9B /* ViewController.swift */,
+				CCDAC05522EAB953003AAF9B /* HomeController.swift */,
 				CCDAC05722EAB953003AAF9B /* Main.storyboard */,
 				CCDAC05A22EAB955003AAF9B /* Assets.xcassets */,
 				CCDAC05C22EAB955003AAF9B /* LaunchScreen.storyboard */,
+				CCCBB11722EC4C7E00FC864D /* VideoCell.swift */,
 				CCDAC05F22EAB955003AAF9B /* Info.plist */,
 			);
 			path = wantube;
@@ -135,8 +138,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCDAC05622EAB953003AAF9B /* ViewController.swift in Sources */,
+				CCDAC05622EAB953003AAF9B /* HomeController.swift in Sources */,
 				CCDAC05422EAB953003AAF9B /* AppDelegate.swift in Sources */,
+				CCCBB11822EC4C7E00FC864D /* VideoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
