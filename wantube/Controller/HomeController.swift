@@ -51,9 +51,12 @@ class HomeController: UITableViewController {
         let tmpVideo = self.videos[indexPath.row]
         cell.titleLabel.text = tmpVideo.title
         cell.subTitleLabel.text = tmpVideo.subTitle
-        cell.thumbnailImageView.image = UIImage(named: tmpVideo.thumbnailImageName!)
-        
-        cell.profileImageView.image = UIImage(named: (tmpVideo.channel?.profileImageName)!)
+        if let thumbnailImageName = tmpVideo.thumbnailImageName{
+            cell.thumbnailImageView.image = UIImage(named: thumbnailImageName)
+        }
+        if let profileImageName = tmpVideo.channel?.profileImageName{
+                cell.profileImageView.image = UIImage(named: profileImageName)
+        }
         
         return cell
     }
