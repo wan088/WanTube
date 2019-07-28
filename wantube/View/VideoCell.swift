@@ -17,7 +17,6 @@ class VideoCell: UITableViewCell{
     var thumbnailImageView: UIImageView = {
         let imageView :UIImageView = UIImageView()
         imageView.backgroundColor = .yellow
-        imageView.image = UIImage(named: "Default_Thumb")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -26,7 +25,6 @@ class VideoCell: UITableViewCell{
     var profileImageView: UIImageView = {
         let imageView :UIImageView = UIImageView()
         imageView.backgroundColor = .green
-        imageView.image = UIImage(named: "Default_Profile")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 22;
         imageView.layer.masksToBounds = true;
@@ -35,7 +33,6 @@ class VideoCell: UITableViewCell{
     var titleLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .white
-        label.text = "ChainSmokers - SickBoy"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -44,7 +41,6 @@ class VideoCell: UITableViewCell{
         label.backgroundColor = .white
         label.numberOfLines = 2
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
-        label.text = "OfficalChainSmokers - 1.000.000.000 views - 2 years "
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .lightGray

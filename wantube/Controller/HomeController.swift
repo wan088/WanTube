@@ -9,12 +9,28 @@
 import UIKit
 
 class HomeController: UITableViewController {
+    
+    var videos: [Video] = {
+        var tmpVideo = Video()
+        tmpVideo.title = "ChainSmokers - SickBoy"
+        tmpVideo.subTitle = "OfficalChainSmokers - 1.000.000.000 views - 2 years "
+        tmpVideo.thumbnailImageName = "Default_Thumb"
+        
+        var tmpChannel = Channel()
+        tmpChannel.name = "ChainSmokers"
+        tmpChannel.profileImageName = "Default_Profile"
+        
+        tmpVideo.channel = tmpChannel
+        return [tmpVideo]
+    }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        let titleView = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 32, height: self.view.frame.height))
+        let titleView = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 32, height: (self.navigationController?.navigationBar.frame.height)!))
+        
         titleView.textAlignment = .left
         titleView.textColor = .white
         titleView.font = .boldSystemFont(ofSize: 20)
@@ -28,10 +44,17 @@ class HomeController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.videos.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "cellId")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId") as! VideoCell
+        let tmpVideo = self.videos[indexPath.row]
+        cell.titleLabel.text = tmpVideo.title
+        cell.subTitleLabel.text = tmpVideo.subTitle
+        cell.thumbnailImageView.image = UIImage(named: tmpVideo.thumbnailImageName!)
+        
+        cell.profileImageView.image = UIImage(named: (tmpVideo.channel?.profileImageName)!)
+        
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
