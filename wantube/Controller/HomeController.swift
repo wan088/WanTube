@@ -10,25 +10,14 @@ import UIKit
 
 class HomeController: UITableViewController {
     
-    var videos: [Video] = {
-        var tmpVideo = Video()
-        tmpVideo.title = "ChainSmokers - SickBoy"
-        tmpVideo.subTitle = "OfficalChainSmokers - 1.000.000.000 views - 2 years "
-        tmpVideo.thumbnailImageName = "Default_Thumb"
-        
-        var tmpChannel = Channel()
-        tmpChannel.name = "ChainSmokers"
-        tmpChannel.profileImageName = "Default_Profile"
-        
-        tmpVideo.channel = tmpChannel
-        return [tmpVideo]
-    }()
+
+    var videos = [Video]()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchVideos()
         view.backgroundColor = .white
-        
         let titleView = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 32, height: (self.navigationController?.navigationBar.frame.height)!))
         
         titleView.textAlignment = .left
@@ -43,6 +32,37 @@ class HomeController: UITableViewController {
         self.navigationController?.navigationBar.isTranslucent = true
     }
     
+    func fetchVideos(){
+        
+        guard let VideoUrl = URL(string: "https://s3-us-west-2.amazonaws.com/youtubeassets/home.json") else{
+            print("ERROR : url optional can't remove")
+            return
+        }
+        
+        do{
+            guard let jsonData = try String(contentsOf: VideoUrl).data(using: .utf8) else{
+                print("ERROR : string -> jsonData :Data")
+                return
+            }
+            let a = try String(contentsOf: VideoUrl)
+            self.videos = try JSONDecoder().decode([Video].self, from: jsonData)
+            
+            print("good")
+        }catch let error as NSError{
+            print("error : "+error.localizedDescription)
+        }
+    }
+    func getThumbnailImage(imageUrlString: String, cell: VideoCell){
+        if let thumbnailImgUrl = URL(string: imageUrlString){
+            do{
+                let data = try Data(contentsOf: thumbnailImgUrl)
+                cell.thumbnailImageView.image = UIImage(data: data)
+            }catch let error as NSError{
+                print("ERROR : image 가져오기")
+            }
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.videos.count
     }
@@ -50,17 +70,18 @@ class HomeController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId") as! VideoCell
         let tmpVideo = self.videos[indexPath.row]
         cell.titleLabel.text = tmpVideo.title
-        cell.subTitleLabel.text = tmpVideo.subTitle
-        if let thumbnailImageName = tmpVideo.thumbnailImageName{
-            cell.thumbnailImageView.image = UIImage(named: thumbnailImageName)
-        }
-        if let profileImageName = tmpVideo.channel?.profileImageName{
-                cell.profileImageView.image = UIImage(named: profileImageName)
-        }
+        cell.subTitleLabel.text = String(tmpVideo.numberOfViews)
         
+        DispatchQueue.main.async {
+            self.getThumbnailImage(imageUrlString: tmpVideo.thumbnailImageName, cell: cell)
+        }
+        //cell.profileImageView.image = UIImage(named: tmpVideo.channel.profileImageName)
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }
+    
+    
 }
+
