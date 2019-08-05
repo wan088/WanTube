@@ -12,7 +12,7 @@ class HomeController: UITableViewController {
     
 
     var videos = [Video]()
-    
+    var thumbnailImages = [UIImage?](repeating: nil, count: 10)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,6 @@ class HomeController: UITableViewController {
             print("ERROR : url optional can't remove")
             return
         }
-        
         do{
             guard let jsonData = try String(contentsOf: VideoUrl).data(using: .utf8) else{
                 print("ERROR : string -> jsonData :Data")
@@ -52,15 +51,25 @@ class HomeController: UITableViewController {
             print("error : "+error.localizedDescription)
         }
     }
-    func getThumbnailImage(imageUrlString: String, cell: VideoCell){
-        if let thumbnailImgUrl = URL(string: imageUrlString){
-            do{
-                let data = try Data(contentsOf: thumbnailImgUrl)
-                cell.thumbnailImageView.image = UIImage(data: data)
-            }catch let error as NSError{
-                print("ERROR : image 가져오기")
+    func getThumbnailImage(imageUrlString: String, indexPath: IndexPath) -> UIImage?{
+        if let thumbnailImage = thumbnailImages[indexPath.row]{
+            return thumbnailImage
+        }else{
+            if let thumbnailImgUrl = URL(string: imageUrlString){
+                print("?")
+                do{
+                    let data = try Data(contentsOf: thumbnailImgUrl)
+                    self.thumbnailImages[indexPath.row] = UIImage(data: data)
+                    return thumbnailImages[indexPath.row]
+                }catch let error as NSError{
+                    print("ERROR : image 가져오기")
+                    return nil
+                }
+            }else{
+                return nil
             }
         }
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -73,7 +82,7 @@ class HomeController: UITableViewController {
         cell.subTitleLabel.text = String(tmpVideo.numberOfViews)
         
         DispatchQueue.main.async {
-            self.getThumbnailImage(imageUrlString: tmpVideo.thumbnailImageName, cell: cell)
+            cell.thumbnailImageView.image = self.getThumbnailImage(imageUrlString: tmpVideo.thumbnailImageName, indexPath: indexPath)
         }
         //cell.profileImageView.image = UIImage(named: tmpVideo.channel.profileImageName)
         return cell
@@ -81,7 +90,5 @@ class HomeController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }
-    
-    
 }
 

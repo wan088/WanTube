@@ -17,13 +17,14 @@ import UIKit
 //}
 
 
-// MARK: - WelcomeElement
+// MARK: - Video
 class Video: Codable {
     let title: String
     let numberOfViews: Int
     let thumbnailImageName: String
     let channel: Channel
     let duration: Int
+    
     
     enum CodingKeys: String, CodingKey {
         case title
