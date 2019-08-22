@@ -13,7 +13,6 @@ class HomeController: UITableViewController {
 
     var videos = [Video]()
     var thumbnailImages = [UIImage?](repeating: nil, count: 10)
-
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchVideos()
@@ -63,6 +62,7 @@ class HomeController: UITableViewController {
                     return thumbnailImages[indexPath.row]
                 }catch let error as NSError{
                     print("ERROR : image 가져오기")
+                    
                     return nil
                 }
             }else{
@@ -89,6 +89,10 @@ class HomeController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let videoLauncher = VideoLauncher()
+        videoLauncher.LaunchVideo()
     }
 }
 

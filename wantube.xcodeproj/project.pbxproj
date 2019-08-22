@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC6D8C432306875E00A3D646 /* asdf.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6D8C422306875E00A3D646 /* asdf.swift */; };
+		CCB89B7F22F82C3500C3CBAC /* VideoLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB89B7E22F82C3500C3CBAC /* VideoLauncher.swift */; };
 		CCCBB11822EC4C7E00FC864D /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBB11722EC4C7E00FC864D /* VideoCell.swift */; };
 		CCCBB11F22ED88B400FC864D /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBB11E22ED88B400FC864D /* Video.swift */; };
 		CCCBB12122ED8C3B00FC864D /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBB12022ED8C3B00FC864D /* Channel.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC6D8C422306875E00A3D646 /* asdf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = asdf.swift; sourceTree = "<group>"; };
+		CCB89B7E22F82C3500C3CBAC /* VideoLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoLauncher.swift; sourceTree = "<group>"; };
 		CCCBB11722EC4C7E00FC864D /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		CCCBB11E22ED88B400FC864D /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		CCCBB12022ED8C3B00FC864D /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
@@ -41,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CCB89B7D22F82C2900C3CBAC /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				CCB89B7E22F82C3500C3CBAC /* VideoLauncher.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		CCCBB11922ED884E00FC864D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				CCCBB11722EC4C7E00FC864D /* VideoCell.swift */,
+				CC6D8C422306875E00A3D646 /* asdf.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -85,6 +98,7 @@
 		CCDAC05222EAB953003AAF9B /* wantube */ = {
 			isa = PBXGroup;
 			children = (
+				CCB89B7D22F82C2900C3CBAC /* Helper */,
 				CCCBB11922ED884E00FC864D /* Model */,
 				CCCBB11A22ED885500FC864D /* View */,
 				CCCBB11B22ED885A00FC864D /* Controller */,
@@ -169,6 +183,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCDAC05622EAB953003AAF9B /* HomeController.swift in Sources */,
+				CCB89B7F22F82C3500C3CBAC /* VideoLauncher.swift in Sources */,
+				CC6D8C432306875E00A3D646 /* asdf.swift in Sources */,
 				CCCBB12122ED8C3B00FC864D /* Channel.swift in Sources */,
 				CCCBB11F22ED88B400FC864D /* Video.swift in Sources */,
 				CCDAC05422EAB953003AAF9B /* AppDelegate.swift in Sources */,
